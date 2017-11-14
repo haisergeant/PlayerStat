@@ -1,0 +1,3 @@
+github "Alamofire/Alamofire" ~> 4.5
+github "nakiostudio/EasyPeasy" ~> 1.6
+github "ReactiveCocoa/ReactiveCocoa" ~> 6.0
