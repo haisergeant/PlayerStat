@@ -19,6 +19,16 @@
 		A6541B331FBB32F700A1BF29 /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B2C1FBB32F700A1BF29 /* PlayerPresenter.swift */; };
 		A6541B341FBB32F700A1BF29 /* PlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B2D1FBB32F700A1BF29 /* PlayerRouter.swift */; };
 		A6541B351FBB32F700A1BF29 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B2E1FBB32F700A1BF29 /* PlayerViewController.swift */; };
+		A6541B3D1FBB3B9800A1BF29 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6541B381FBB3B9800A1BF29 /* ReactiveSwift.framework */; };
+		A6541B3E1FBB3B9800A1BF29 /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6541B391FBB3B9800A1BF29 /* EasyPeasy.framework */; };
+		A6541B3F1FBB3B9800A1BF29 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6541B3A1FBB3B9800A1BF29 /* ReactiveCocoa.framework */; };
+		A6541B401FBB3B9800A1BF29 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6541B3B1FBB3B9800A1BF29 /* Result.framework */; };
+		A6541B411FBB3B9800A1BF29 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6541B3C1FBB3B9800A1BF29 /* Alamofire.framework */; };
+		A6541B441FBB3E2100A1BF29 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B431FBB3E2100A1BF29 /* Repository.swift */; };
+		A6541B461FBB3E4400A1BF29 /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B451FBB3E4400A1BF29 /* ServerRepository.swift */; };
+		A6541B481FBB7DF900A1BF29 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B471FBB7DF900A1BF29 /* Player.swift */; };
+		A6541B4A1FBB7F0700A1BF29 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B491FBB7F0700A1BF29 /* Team.swift */; };
+		A6541B4C1FBB892E00A1BF29 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6541B4B1FBB892E00A1BF29 /* Match.swift */; };
 		A67FDC831FBB0A6A009F5D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDC821FBB0A6A009F5D58 /* AppDelegate.swift */; };
 		A67FDC8A1FBB0A6A009F5D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67FDC891FBB0A6A009F5D58 /* Assets.xcassets */; };
 		A67FDC8D1FBB0A6A009F5D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67FDC8B1FBB0A6A009F5D58 /* LaunchScreen.storyboard */; };
@@ -50,6 +60,16 @@
 		A6541B2C1FBB32F700A1BF29 /* PlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
 		A6541B2D1FBB32F700A1BF29 /* PlayerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRouter.swift; sourceTree = "<group>"; };
 		A6541B2E1FBB32F700A1BF29 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		A6541B381FBB3B9800A1BF29 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		A6541B391FBB3B9800A1BF29 /* EasyPeasy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyPeasy.framework; path = Carthage/Build/iOS/EasyPeasy.framework; sourceTree = "<group>"; };
+		A6541B3A1FBB3B9800A1BF29 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		A6541B3B1FBB3B9800A1BF29 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		A6541B3C1FBB3B9800A1BF29 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		A6541B431FBB3E2100A1BF29 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		A6541B451FBB3E4400A1BF29 /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		A6541B471FBB7DF900A1BF29 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A6541B491FBB7F0700A1BF29 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		A6541B4B1FBB892E00A1BF29 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		A67FDC7F1FBB0A6A009F5D58 /* PlayerStat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerStat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67FDC821FBB0A6A009F5D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A67FDC891FBB0A6A009F5D58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +87,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6541B3D1FBB3B9800A1BF29 /* ReactiveSwift.framework in Frameworks */,
+				A6541B3E1FBB3B9800A1BF29 /* EasyPeasy.framework in Frameworks */,
+				A6541B3F1FBB3B9800A1BF29 /* ReactiveCocoa.framework in Frameworks */,
+				A6541B401FBB3B9800A1BF29 /* Result.framework in Frameworks */,
+				A6541B411FBB3B9800A1BF29 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +105,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6541B371FBB3B9800A1BF29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6541B3C1FBB3B9800A1BF29 /* Alamofire.framework */,
+				A6541B391FBB3B9800A1BF29 /* EasyPeasy.framework */,
+				A6541B3A1FBB3B9800A1BF29 /* ReactiveCocoa.framework */,
+				A6541B381FBB3B9800A1BF29 /* ReactiveSwift.framework */,
+				A6541B3B1FBB3B9800A1BF29 /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A67FDC761FBB0A6A009F5D58 = {
 			isa = PBXGroup;
 			children = (
 				A67FDC811FBB0A6A009F5D58 /* PlayerStat */,
 				A67FDC961FBB0A6A009F5D58 /* PlayerStatTests */,
 				A67FDC801FBB0A6A009F5D58 /* Products */,
+				A6541B371FBB3B9800A1BF29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +180,9 @@
 		A67FDCA41FBB0E71009F5D58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A6541B471FBB7DF900A1BF29 /* Player.swift */,
+				A6541B491FBB7F0700A1BF29 /* Team.swift */,
+				A6541B4B1FBB892E00A1BF29 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +200,8 @@
 		A67FDCA61FBB0E71009F5D58 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A6541B431FBB3E2100A1BF29 /* Repository.swift */,
+				A6541B451FBB3E4400A1BF29 /* ServerRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,6 +249,7 @@
 				A67FDC7B1FBB0A6A009F5D58 /* Sources */,
 				A67FDC7C1FBB0A6A009F5D58 /* Frameworks */,
 				A67FDC7D1FBB0A6A009F5D58 /* Resources */,
+				A6541B421FBB3BD800A1BF29 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -293,12 +337,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A6541B421FBB3BD800A1BF29 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EasyPeasy.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A67FDC7B1FBB0A6A009F5D58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6541B461FBB3E4400A1BF29 /* ServerRepository.swift in Sources */,
 				A6541B251FBB2BEB00A1BF29 /* MatchPresenter.swift in Sources */,
+				A6541B4A1FBB7F0700A1BF29 /* Team.swift in Sources */,
+				A6541B4C1FBB892E00A1BF29 /* Match.swift in Sources */,
 				A67FDCAB1FBB0EE1009F5D58 /* URLConstants.swift in Sources */,
 				A6541B261FBB2BEB00A1BF29 /* MatchRouter.swift in Sources */,
 				A6541B301FBB32F700A1BF29 /* PlayerConfigurator.swift in Sources */,
@@ -309,9 +382,11 @@
 				A6541B231FBB2BEB00A1BF29 /* MatchInteractor.swift in Sources */,
 				A6541B271FBB2BEB00A1BF29 /* MatchViewController.swift in Sources */,
 				A6541B311FBB32F700A1BF29 /* PlayerInteractor.swift in Sources */,
+				A6541B441FBB3E2100A1BF29 /* Repository.swift in Sources */,
 				A67FDCA91FBB0E8B009F5D58 /* BaseViewController.swift in Sources */,
 				A6541B241FBB2BEB00A1BF29 /* MatchModels.swift in Sources */,
 				A6541B341FBB32F700A1BF29 /* PlayerRouter.swift in Sources */,
+				A6541B481FBB7DF900A1BF29 /* Player.swift in Sources */,
 				A6541B351FBB32F700A1BF29 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +533,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlayerStat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haile.PlayerStat;
@@ -472,6 +551,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlayerStat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haile.PlayerStat;
