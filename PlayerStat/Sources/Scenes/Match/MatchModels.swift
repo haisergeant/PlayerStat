@@ -11,3 +11,15 @@
 
 import UIKit
 
+
+struct MatchRequest {
+    
+}
+
+struct MatchResponse {
+    var matches: [Match]
+}
+
+struct MatchViewModel {
+    
+}

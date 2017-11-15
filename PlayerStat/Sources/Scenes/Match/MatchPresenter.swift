@@ -12,13 +12,19 @@
 import UIKit
 
 protocol MatchPresenterInput {
+    func present(response: MatchResponse)
 }
 
 protocol MatchPresenterOutput: class {
+    func display(viewModel: MatchViewModel)
 }
 
 class MatchPresenter: MatchPresenterInput {
     weak var output: MatchPresenterOutput!
     
     // MARK: - Presentation logic
+    func present(response: MatchResponse) {
+        let matches = response.matches
+        
+    }
 }

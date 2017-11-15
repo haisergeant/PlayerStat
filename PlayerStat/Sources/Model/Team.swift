@@ -37,7 +37,6 @@ class Team {
             self.shortName = ""
         }
         
-        
         self.players = [Player]()
         if let array = dictionary.object(forKey: "top_players") as? [NSDictionary] {
             array.forEach { dict in

@@ -12,14 +12,23 @@
 import UIKit
 
 protocol MatchInteractorInput {
-    
+    func load(request: MatchRequest)
 }
 
 protocol MatchInteractorOutput {
-    
+    func present(response: MatchResponse)
 }
 
 class MatchInteractor: MatchInteractorInput {
     var output: MatchInteractorOutput!
-    
+    var repository: Repository!
+    func load(request: MatchRequest) {
+        self.repository
+            .matchList()
+            .startWithResult { [weak self] result in
+                if let value = result.value {
+                    self?.output.present(response: MatchResponse(matches: value))
+                }
+        }
+    }
 }

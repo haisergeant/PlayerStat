@@ -12,11 +12,11 @@
 import UIKit
 
 protocol MatchViewControllerInput {
-    
+    func display(viewModel: MatchViewModel)
 }
 
 protocol MatchViewControllerOutput {
-    
+    func load(request: MatchRequest)
 }
 
 class MatchViewController: BaseViewController, MatchViewControllerInput {
@@ -24,4 +24,24 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     var router: MatchRouter!
     
     // MARK: - Object lifecycle
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configureSubviews() {
+        super.configureSubviews()
+    }
+    
+    override func configureContent() {
+        super.configureContent()
+        self.output.load(request: MatchRequest())
+    }
+    
+    func display(viewModel: MatchViewModel) {
+        
+    }
 }

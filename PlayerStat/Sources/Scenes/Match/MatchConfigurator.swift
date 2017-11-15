@@ -40,6 +40,7 @@ class MatchConfigurator {
         
         let interactor = MatchInteractor()
         interactor.output = presenter
+        interactor.repository = ServerRepository.instance
         
         viewController.output = interactor
         viewController.router = router
