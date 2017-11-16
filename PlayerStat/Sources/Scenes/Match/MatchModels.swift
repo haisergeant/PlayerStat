@@ -21,5 +21,5 @@ struct MatchResponse {
 }
 
 struct MatchViewModel {
-    
+    var model: [MatchModel]
 }

@@ -58,17 +58,13 @@ struct PlayerModel {
     }
     
     init(player: Player,
-         image: String,
-         shortName: String,
-         jumperValue: String,
-         positionValue: String,
          style: Style = Style(),
          padding: Padding = Padding()) {
         self.player = player
-        self.image = image
-        self.shortName = shortName
-        self.jumperValue = jumperValue
-        self.positionValue = positionValue
+        self.image = ""
+        self.shortName = player.shortName
+        self.jumperValue = String(player.jumperNumber)
+        self.positionValue = player.position
         self.style = style
         self.padding = padding
     }
@@ -92,22 +88,68 @@ class PlayerView: BaseView {
         self.infoContainer.addSubview(self.labelName)
         self.infoContainer.addSubview(self.labelJumper)
         self.infoContainer.addSubview(self.labelPosition)
+        
+        self.labelName.numberOfLines = 0
+        self.labelJumper.numberOfLines = 0
+        self.labelPosition.numberOfLines = 0
     }
  
     override func configureLayout() {
         super.configureLayout()
+        self.imageView.easy.clear()
+        self.infoContainer.easy.clear()
         self.imageView.easy.layout(
             Top(),
             Bottom(),
-            Size(self.style.imageSize)
+            Width(self.style.imageSize.width)
+        )
+        
+        self.infoContainer.easy.layout(
+            Top(),
+            Bottom()
         )
         
         if style.alignment == .left {
             self.imageView.easy.layout(Left())
+            self.infoContainer.easy.layout(
+                Left().to(self.imageView, .right),
+                Right()
+            )
         } else {
             self.imageView.easy.layout(Right())
+            self.infoContainer.easy.layout(
+                Right().to(self.imageView, .left),
+                Left()
+            )
         }
         
+        self.labelName.easy.layout(
+            Top(self.padding.appPadding.top),
+            Left(self.padding.appPadding.left),
+            Right(self.padding.appPadding.right)
+        )
         
+        self.labelJumper.easy.layout(
+            Top(self.padding.verticalSpacing).to(self.labelName, .bottom),
+            Left(self.padding.appPadding.left),
+            Right(self.padding.appPadding.right)
+        )
+        
+        self.labelPosition.easy.layout(
+            Top(>=self.padding.verticalSpacing).to(self.labelJumper, .bottom),
+            Left(self.padding.appPadding.left),
+            Right(self.padding.appPadding.right),
+            Bottom(self.padding.appPadding.bottom)
+        )
+    }
+    
+    func configure(model: PlayerModel) {
+        self.labelName.attributedText = model.shortName.styled(with: model.style.shortNameStyle)
+        self.labelJumper.attributedText = model.jumperValue.styled(with: model.style.jumperValueStyle)
+        self.labelPosition.attributedText = model.positionValue.styled(with: model.style.positionValueStyle)
+        
+        self.style = model.style
+        self.padding = model.padding
+        self.configureLayout()
     }
 }

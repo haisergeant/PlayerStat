@@ -46,6 +46,9 @@
 		A6BB6C371FBCB25C0055EDCA /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB6C361FBCB25C0055EDCA /* PlayerView.swift */; };
 		A6BB6C391FBCB28F0055EDCA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB6C381FBCB28F0055EDCA /* BaseView.swift */; };
 		A6BB6C3B1FBCC2630055EDCA /* BonMot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BB6C3A1FBCC2630055EDCA /* BonMot.framework */; };
+		A6DBAB761FBDAA7200BA72A3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */; };
+		A6DBAB781FBE138500BA72A3 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */; };
+		A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,9 @@
 		A6BB6C361FBCB25C0055EDCA /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A6BB6C381FBCB28F0055EDCA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		A6BB6C3A1FBCC2630055EDCA /* BonMot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BonMot.framework; path = Carthage/Build/iOS/BonMot.framework; sourceTree = "<group>"; };
+		A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				A65A425D1FBCD12A003FA650 /* FontUtils.swift */,
+				A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */,
+				A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -293,6 +301,7 @@
 			children = (
 				A6BB6C361FBCB25C0055EDCA /* PlayerView.swift */,
 				A6BB6C381FBCB28F0055EDCA /* BaseView.swift */,
+				A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -437,10 +446,13 @@
 				A6541B461FBB3E4400A1BF29 /* ServerRepository.swift in Sources */,
 				A6541B251FBB2BEB00A1BF29 /* MatchPresenter.swift in Sources */,
 				A6541B4A1FBB7F0700A1BF29 /* Team.swift in Sources */,
+				A6DBAB761FBDAA7200BA72A3 /* BaseTableViewCell.swift in Sources */,
 				A6BB6C371FBCB25C0055EDCA /* PlayerView.swift in Sources */,
 				A6541B4C1FBB892E00A1BF29 /* Match.swift in Sources */,
 				A67FDCAB1FBB0EE1009F5D58 /* URLConstants.swift in Sources */,
 				A6541B261FBB2BEB00A1BF29 /* MatchRouter.swift in Sources */,
+				A6DBAB781FBE138500BA72A3 /* UIView+Utils.swift in Sources */,
+				A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */,
 				A6541B301FBB32F700A1BF29 /* PlayerConfigurator.swift in Sources */,
 				A67FDC831FBB0A6A009F5D58 /* AppDelegate.swift in Sources */,
 				A6541B331FBB32F700A1BF29 /* PlayerPresenter.swift in Sources */,

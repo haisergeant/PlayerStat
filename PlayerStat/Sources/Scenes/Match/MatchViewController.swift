@@ -10,6 +10,8 @@
 //
 
 import UIKit
+import EasyPeasy
+import BonMot
 
 protocol MatchViewControllerInput {
     func display(viewModel: MatchViewModel)
@@ -23,6 +25,10 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     var output: MatchViewControllerOutput!
     var router: MatchRouter!
     
+    var tableView = UITableView(frame: .zero, style: UITableViewStyle.plain)
+    
+    var result = [MatchModel]()
+    
     // MARK: - Object lifecycle
     override init() {
         super.init()
@@ -34,6 +40,18 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     
     override func configureSubviews() {
         super.configureSubviews()
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140        
+        self.tableView.separatorStyle = .none
+    }
+    
+    override func configureLayout() {
+        super.configureLayout()
+        self.tableView.easy.layout(Edges())
     }
     
     override func configureContent() {
@@ -42,6 +60,31 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     }
     
     func display(viewModel: MatchViewModel) {
-        
+        result.removeAll()
+        result.append(contentsOf: viewModel.model)
+        self.tableView.reloadData()
     }
+}
+
+extension MatchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return result.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return result[section].playersModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let match = self.result[indexPath.section]
+        let players = match.playersModel[indexPath.row]
+        let cell = PlayersCell(identifier: "playersCell")
+        
+        cell.configure(model: players)
+        return cell
+    }
+}
+
+extension MatchViewController: UITableViewDelegate {
+    
 }

@@ -26,5 +26,41 @@ class MatchPresenter: MatchPresenterInput {
     func present(response: MatchResponse) {
         let matches = response.matches
         
+        var finalModel = [MatchModel]()
+        matches.forEach { match in
+            var playersModel = [PlayersModel]()
+            var max = 0
+            max = match.teamA?.players.count ?? 0
+            if let countB = match.teamB?.players.count, max < countB {
+                max = countB
+            }
+            for i in 0..<max {
+                var playerA: Player? = nil
+                let playersA = match.teamA?.players
+                if let playersA = playersA, playersA.count > i {
+                    playerA = playersA[i]
+                }
+                var modelA: PlayerModel? = nil
+                if let playerA = playerA {
+                    modelA = PlayerModel(player: playerA)
+                }
+                
+                var playerB: Player? = nil
+                let playersB = match.teamB?.players
+                if let playersB = playersB, playersB.count > i {
+                    playerB = playersB[i]
+                }
+                var modelB: PlayerModel? = nil
+                if let playerB = playerB {
+                    modelB = PlayerModel(player: playerB,
+                                         style: PlayerModel.Style(alignment: .right))
+                }
+                
+                playersModel.append(PlayersModel(leftPlayer: modelA, rightPlayer: modelB))
+            }
+            finalModel.append(MatchModel(playersModel: playersModel))
+        }
+        
+        self.output.display(viewModel: MatchViewModel(model: finalModel))
     }
 }

@@ -25,11 +25,9 @@ extension MatchPresenter: MatchInteractorOutput {
 
 class MatchConfigurator {
     // MARK: - Object lifecycle
-    static let sharedInstance = MatchConfigurator()
-    private init() {}
     
     // MARK: - Configuration
-    func getController() -> MatchViewController {
+    class func getController() -> MatchViewController {
         let viewController = MatchViewController()
         
         let router = MatchRouter()
