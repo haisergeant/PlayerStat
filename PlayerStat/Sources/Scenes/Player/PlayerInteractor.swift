@@ -19,7 +19,6 @@ protocol PlayerInteractorOutput {
 
 class PlayerInteractor: PlayerInteractorInput {
     var output: PlayerInteractorOutput!
-    
-    
+        
     // MARK: - Business logic
 }

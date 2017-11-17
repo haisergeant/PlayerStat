@@ -49,6 +49,8 @@
 		A6DBAB761FBDAA7200BA72A3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */; };
 		A6DBAB781FBE138500BA72A3 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */; };
 		A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */; };
+		A6DBAB7C1FBE1F9000BA72A3 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB7B1FBE1F9000BA72A3 /* UIImageView+Utils.swift */; };
+		A6DBAB7E1FBE64E500BA72A3 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB7D1FBE64E500BA72A3 /* CacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Utils.swift"; sourceTree = "<group>"; };
+		A6DBAB7B1FBE1F9000BA72A3 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
+		A6DBAB7D1FBE64E500BA72A3 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +241,7 @@
 			children = (
 				A6541B431FBB3E2100A1BF29 /* Repository.swift */,
 				A6541B451FBB3E4400A1BF29 /* ServerRepository.swift */,
+				A6DBAB7D1FBE64E500BA72A3 /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			children = (
 				A65A425D1FBCD12A003FA650 /* FontUtils.swift */,
 				A6DBAB771FBE138500BA72A3 /* UIView+Utils.swift */,
+				A6DBAB7B1FBE1F9000BA72A3 /* UIImageView+Utils.swift */,
 				A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */,
 			);
 			path = Utils;
@@ -454,9 +460,11 @@
 				A6DBAB781FBE138500BA72A3 /* UIView+Utils.swift in Sources */,
 				A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */,
 				A6541B301FBB32F700A1BF29 /* PlayerConfigurator.swift in Sources */,
+				A6DBAB7C1FBE1F9000BA72A3 /* UIImageView+Utils.swift in Sources */,
 				A67FDC831FBB0A6A009F5D58 /* AppDelegate.swift in Sources */,
 				A6541B331FBB32F700A1BF29 /* PlayerPresenter.swift in Sources */,
 				A65A425E1FBCD12A003FA650 /* FontUtils.swift in Sources */,
+				A6DBAB7E1FBE64E500BA72A3 /* CacheService.swift in Sources */,
 				A6541B221FBB2BEB00A1BF29 /* MatchConfigurator.swift in Sources */,
 				A6541B321FBB32F700A1BF29 /* PlayerModels.swift in Sources */,
 				A6541B231FBB2BEB00A1BF29 /* MatchInteractor.swift in Sources */,

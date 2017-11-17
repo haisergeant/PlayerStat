@@ -12,8 +12,12 @@
 import UIKit
 
 protocol MatchRouterInput {
+    func navigateToPlayer(player: Player)
 }
 
 class MatchRouter: MatchRouterInput {
     weak var viewController: MatchViewController!
+    func navigateToPlayer(player: Player) {
+        
+    }
 }

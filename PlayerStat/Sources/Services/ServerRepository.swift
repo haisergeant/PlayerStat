@@ -15,7 +15,7 @@ class ServerRepository: Repository {
     static let instance = ServerRepository()
     func matchList() -> SignalProducer<[Match], NSError> {
         return SignalProducer { observer, disposable in
-            Alamofire.request(URL.MATCH_URL).responseJSON { response in
+            let request = Alamofire.request(URL.MATCH_URL).responseJSON { response in
                 if let mainDict = response.result.value as? [NSDictionary] {
                     var matches = [Match]()
                     mainDict.forEach {
@@ -24,6 +24,9 @@ class ServerRepository: Repository {
                     observer.send(value: matches)
                     observer.sendCompleted()
                 }
+            }
+            _ = disposable.observeEnded {
+                request.cancel()
             }
         }
     }

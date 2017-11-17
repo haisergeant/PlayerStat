@@ -34,6 +34,14 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
         super.init()
     }
     
+    override func navigationTitle() -> String {
+        return "Matches"
+    }
+    
+    override func shouldShowNavigationBar() -> Bool {
+        return true
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,11 +50,11 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
         super.configureSubviews()
         self.view.addSubview(self.tableView)
         
-        self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140        
         self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
     }
     
     override func configureLayout() {
@@ -67,6 +75,14 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
 }
 
 extension MatchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerModel = result[section].headerModel
+        let view = HeaderView()
+        view.configure(model: headerModel)
+        return view
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return result.count
     }
@@ -78,13 +94,15 @@ extension MatchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let match = self.result[indexPath.section]
         let players = match.playersModel[indexPath.row]
-        let cell = PlayersCell(identifier: "playersCell")
+        let cell = PlayersCell(delegate: self)
         
         cell.configure(model: players)
         return cell
     }
 }
 
-extension MatchViewController: UITableViewDelegate {
-    
+extension MatchViewController: PlayersCellDelegate {
+    func navigateToPlayer(player: Player) {
+        
+    }
 }

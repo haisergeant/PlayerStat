@@ -22,4 +22,18 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     var router: PlayerRouter!
     
     // MARK: - Object lifecycle
+    let player: Player!
+    init(player: Player) {
+        self.player = player
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func configureSubviews() {
+        super.configureSubviews()
+        
+    }
 }

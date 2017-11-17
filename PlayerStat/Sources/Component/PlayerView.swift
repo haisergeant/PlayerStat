@@ -10,11 +10,6 @@ import UIKit
 import BonMot
 import EasyPeasy
 
-enum CellAlignment {
-    case left
-    case right
-}
-
 struct PlayerModel {
     let player: Player
 
@@ -29,7 +24,7 @@ struct PlayerModel {
         var jumperValueStyle: StringStyle
         var positionValueStyle: StringStyle
         var imageSize: CGSize
-        var alignment: CellAlignment
+        var alignment: NSTextAlignment
         init(shortNameStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
                                                        .color(AppStyle.instance.colorDarkGray())),
              jumperValueStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
@@ -37,7 +32,7 @@ struct PlayerModel {
              positionValueStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
                                                            .color(AppStyle.instance.colorLightGray())),
              imageSize: CGSize = CGSize(width: 60.0, height: 100.0),
-             alignment: CellAlignment = .left) {
+             alignment: NSTextAlignment = .left) {
             self.shortNameStyle = shortNameStyle
             self.jumperValueStyle = jumperValueStyle
             self.positionValueStyle = positionValueStyle
@@ -61,9 +56,9 @@ struct PlayerModel {
          style: Style = Style(),
          padding: Padding = Padding()) {
         self.player = player
-        self.image = ""
+        self.image = String(format: URL.PLAYER_AVATAR_URL, self.player.id)
         self.shortName = player.shortName
-        self.jumperValue = String(player.jumperNumber)
+        self.jumperValue = "Jumper No: \(String(player.jumperNumber))\nStat Val: \(String(format: "%.f", player.statValue))"
         self.positionValue = player.position
         self.style = style
         self.padding = padding
@@ -71,6 +66,7 @@ struct PlayerModel {
 }
 
 class PlayerView: BaseView {
+    let imageViewContainer = UIView()
     let imageView = UIImageView()
     
     let infoContainer = UIView()
@@ -83,7 +79,9 @@ class PlayerView: BaseView {
     
     override func configureSubviews() {
         super.configureSubviews()
-        self.addSubview(self.imageView)
+        self.addSubview(self.imageViewContainer)
+        self.imageViewContainer.addSubview(self.imageView)
+        
         self.addSubview(self.infoContainer)
         self.infoContainer.addSubview(self.labelName)
         self.infoContainer.addSubview(self.labelJumper)
@@ -92,31 +90,36 @@ class PlayerView: BaseView {
         self.labelName.numberOfLines = 0
         self.labelJumper.numberOfLines = 0
         self.labelPosition.numberOfLines = 0
+        self.imageViewContainer.clipsToBounds = true
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageViewContainer.backgroundColor = .black
     }
  
     override func configureLayout() {
         super.configureLayout()
-        self.imageView.easy.clear()
+        self.imageViewContainer.easy.clear()
         self.infoContainer.easy.clear()
-        self.imageView.easy.layout(
+        self.imageViewContainer.easy.layout(
             Top(),
             Bottom(),
             Width(self.style.imageSize.width)
         )
+        
+        self.imageView.easy.layout(Edges())
         
         self.infoContainer.easy.layout(
             Top(),
             Bottom()
         )
         
-        if style.alignment == .left {
-            self.imageView.easy.layout(Left())
+        if self.style.alignment == .left {
+            self.imageViewContainer.easy.layout(Left())
             self.infoContainer.easy.layout(
                 Left().to(self.imageView, .right),
                 Right()
             )
         } else {
-            self.imageView.easy.layout(Right())
+            self.imageViewContainer.easy.layout(Right())
             self.infoContainer.easy.layout(
                 Right().to(self.imageView, .left),
                 Left()
@@ -128,12 +131,14 @@ class PlayerView: BaseView {
             Left(self.padding.appPadding.left),
             Right(self.padding.appPadding.right)
         )
+        self.labelName.textAlignment = self.style.alignment
         
         self.labelJumper.easy.layout(
             Top(self.padding.verticalSpacing).to(self.labelName, .bottom),
             Left(self.padding.appPadding.left),
             Right(self.padding.appPadding.right)
         )
+        self.labelJumper.textAlignment = self.style.alignment
         
         self.labelPosition.easy.layout(
             Top(>=self.padding.verticalSpacing).to(self.labelJumper, .bottom),
@@ -141,9 +146,11 @@ class PlayerView: BaseView {
             Right(self.padding.appPadding.right),
             Bottom(self.padding.appPadding.bottom)
         )
+        self.labelPosition.textAlignment = self.style.alignment
     }
     
     func configure(model: PlayerModel) {
+        self.imageView.image(from: model.image, defaultImageName: "default-avatar")
         self.labelName.attributedText = model.shortName.styled(with: model.style.shortNameStyle)
         self.labelJumper.attributedText = model.jumperValue.styled(with: model.style.jumperValueStyle)
         self.labelPosition.attributedText = model.positionValue.styled(with: model.style.positionValueStyle)

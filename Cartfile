@@ -2,3 +2,4 @@ github "Alamofire/Alamofire" ~> 4.5
 github "nakiostudio/EasyPeasy" ~> 1.6
 github "ReactiveCocoa/ReactiveCocoa" ~> 6.0
 github "Raizlabs/BonMot"
+github "jdg/MBProgressHUD" ~> 1.1.0

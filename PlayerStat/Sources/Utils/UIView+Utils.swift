@@ -47,12 +47,12 @@ extension UIView {
     public func edgeContraint(attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
         var superview: UIView? = self.superview
         while superview != nil {
-            for constraint in superview!.constraints { // swiftlint:disable:this force_unwrapping
+            for constraint in superview!.constraints {
                 if let firstItem = constraint.firstItem, constraint.firstAttribute == attribute && firstItem.isEqual(self) {
                     return constraint
                 }
             }
-            superview = superview!.superview // swiftlint:disable:this force_unwrapping
+            superview = superview!.superview
         }
         return nil
     }

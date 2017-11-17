@@ -58,7 +58,10 @@ class MatchPresenter: MatchPresenterInput {
                 
                 playersModel.append(PlayersModel(leftPlayer: modelA, rightPlayer: modelB))
             }
-            finalModel.append(MatchModel(playersModel: playersModel))
+            
+            let headerModel = HeaderModel(title: match.id)
+            finalModel.append(MatchModel(headerModel: headerModel,
+                                         playersModel: playersModel))
         }
         
         self.output.display(viewModel: MatchViewModel(model: finalModel))

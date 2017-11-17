@@ -16,8 +16,8 @@ class Team {
     var players: [Player]
     
     init(dictionary: NSDictionary) {
-        if let value = dictionary.object(forKey: "id") as? String {
-            self.id = value
+        if let value = dictionary.object(forKey: "id") as? Double {
+            self.id = String(format: "%.f", value)
         } else {
             self.id = ""
         }

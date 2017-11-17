@@ -17,8 +17,8 @@ class Player {
     let jumperNumber: Int
     
     init(dictionary: NSDictionary) {
-        if let value = dictionary.object(forKey: "id") as? String {
-            self.id = value
+        if let value = dictionary.object(forKey: "id") as? Double {
+            self.id = String(format: "%.f", value)
         } else {
             self.id = ""
         }
@@ -48,4 +48,48 @@ class Player {
             self.jumperNumber = 0
         }
     }
+}
+
+class PlayerDetail {
+    let player: Player
+    let surname: String
+    let otherName: String
+    
+    let birthDate: Date
+    let height: Double
+    let weight: Double
+    
+    let games: Int
+    let points: Int
+    let tries: Int
+    let winPercentage: Double
+    
+    // last match stats
+    let error: Double
+    let goals: Double
+    let intercepted: Double
+    let kicks: Double
+    let matchPoints: Double
+    let possessions: Double
+    let runs: Double
+    let tackles: Double
+    let matchTries: Double
+    
+    let minsPlayed: Double
+    let attackingKicks: Double
+    let bombCaught: Double
+    let bombDropped: Double
+    let chargesDown: Double
+    let chargedDown: Double
+    let dropOuts: Double
+    let dummyHalfRuns: Double
+    let effectiveOffloads: Double
+    let fantasyPoints: Double
+    init(dictionary: NSDictionary) {
+        self.player = Player(dictionary: dictionary)
+        
+        self.surname = dictionary.object(forKey: "surname")
+        
+    }
+    
 }

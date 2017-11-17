@@ -19,32 +19,27 @@ extension PlayerViewController: PlayerPresenterOutput {
 extension PlayerInteractor: PlayerViewControllerOutput {
 }
 
-extension PlayerPresenter: PlayerInteractorOutput
-{
+extension PlayerPresenter: PlayerInteractorOutput {
 }
 
 class PlayerConfigurator
 {
-  // MARK: - Object lifecycle
-  
-  static let sharedInstance = PlayerConfigurator()
-  
-  private init() {}
-  
-  // MARK: - Configuration
-  
-  func configure(viewController: PlayerViewController)
-  {
-    let router = PlayerRouter()
-    router.viewController = viewController
+    // MARK: - Object lifecycle
     
-    let presenter = PlayerPresenter()
-    presenter.output = viewController
-    
-    let interactor = PlayerInteractor()
-    interactor.output = presenter
-    
-    viewController.output = interactor
-    viewController.router = router
-  }
+    // MARK: - Configuration
+    class func getController(player: Player) -> PlayerViewController {
+        let viewController = PlayerViewController()
+        let router = PlayerRouter()
+        router.viewController = viewController
+        
+        let presenter = PlayerPresenter()
+        presenter.output = viewController
+        
+        let interactor = PlayerInteractor()
+        interactor.output = presenter
+        
+        viewController.output = interactor
+        viewController.router = router
+        return viewController
+    }
 }
