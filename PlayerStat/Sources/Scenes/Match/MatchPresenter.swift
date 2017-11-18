@@ -11,17 +11,21 @@
 
 import UIKit
 
-protocol MatchPresenterInput {
+
+protocol MatchPresenterInput: ErrorPresenterInput {
     func present(response: MatchResponse)
 }
 
-protocol MatchPresenterOutput: class {
+protocol MatchPresenterOutput: class, ErrorPresenterOutput {
     func display(viewModel: MatchViewModel)
 }
 
 class MatchPresenter: MatchPresenterInput {
     weak var output: MatchPresenterOutput!
     
+    func presentError(error: String) {
+        self.output.displayError(error: error)
+    }
     // MARK: - Presentation logic
     func present(response: MatchResponse) {
         let matches = response.matches

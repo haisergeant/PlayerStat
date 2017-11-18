@@ -11,11 +11,11 @@
 
 import UIKit
 
-protocol PlayerPresenterInput {
+protocol PlayerPresenterInput: ErrorPresenterInput {
     func present(response: PlayerResponse)
 }
 
-protocol PlayerPresenterOutput: class {
+protocol PlayerPresenterOutput: class, ErrorPresenterOutput {
     func display(viewModel: PlayerViewModel)
 }
 
@@ -23,6 +23,11 @@ class PlayerPresenter: PlayerPresenterInput {
   weak var output: PlayerPresenterOutput!
   
   // MARK: - Presentation logic
+    func presentError(error: String) {
+        self.output.displayError(error: error)
+    }
+    
+    
     func present(response: PlayerResponse) {
         let detail = response.playerDetail
         let player = detail.player
@@ -50,9 +55,72 @@ class PlayerPresenter: PlayerPresenterInput {
         
         header = HeaderModel(title: "Last match status")
         list.removeAll()
+        self.itemModel(list: &list, title: "Errors", value: detail.error)
+        self.itemModel(list: &list, title: "Goals", value: detail.goals)
+        self.itemModel(list: &list, title: "Intercepted", value: detail.intercepted)
+        self.itemModel(list: &list, title: "Intercepts", value: detail.intercepts)
+        self.itemModel(list: &list, title: "Kicks", value: detail.kicks)
+        self.itemModel(list: &list, title: "Match points", value: detail.matchPoints)
+        self.itemModel(list: &list, title: "Possessions", value: detail.possessions)
+        self.itemModel(list: &list, title: "Runs", value: detail.runs)
+        self.itemModel(list: &list, title: "Tackles", value: detail.tackles)
+        self.itemModel(list: &list, title: "Match tries", value: detail.matchTries)
+        self.itemModel(list: &list, title: "Mins played", value: detail.minsPlayed)
+        self.itemModel(list: &list, title: "Attackin kicks", value: detail.attackingKicks)
+        self.itemModel(list: &list, title: "Bomb caught", value: detail.bombCaught)
+        self.itemModel(list: &list, title: "Bomb dropped", value: detail.bombDropped)
+        self.itemModel(list: &list, title: "Charged down", value: detail.chargedDown)
+        self.itemModel(list: &list, title: "Charges down", value: detail.chargesDown)
+        self.itemModel(list: &list, title: "Drop outs", value: detail.dropOuts)
+        self.itemModel(list: &list, title: "Dummy half runs", value: detail.dummyHalfRuns)
+        self.itemModel(list: &list, title: "Effective offloads", value: detail.effectiveOffloads)
+        self.itemModel(list: &list, title: "Fantasy points", value: detail.fantasyPoints)
+        self.itemModel(list: &list, title: "Field goal attempts", value: detail.fieldGoalAttemps)
+        self.itemModel(list: &list, title: "Field goal misses", value: detail.fieldGoalMisses)
+        self.itemModel(list: &list, title: "Field goals", value: detail.fieldGoals)
+        self.itemModel(list: &list, title: "Forced dropouts", value: detail.forcedDropOuts)
+        self.itemModel(list: &list, title: "General play pass", value: detail.generalPlayPass)
+        self.itemModel(list: &list, title: "Goal misses", value: detail.goalMisses)
+        self.itemModel(list: &list, title: "Ineffective tackles", value: detail.ineffectiveTackles)
+        self.itemModel(list: &list, title: "In goal escapes", value: detail.inGoalEscapes)
+        self.itemModel(list: &list, title: "Interchange Off", value: detail.interchangesOff)
+        self.itemModel(list: &list, title: "Interchange On", value: detail.interchangesOn)
+        self.itemModel(list: &list, title: "Kick errors", value: detail.kickErrors)
+        self.itemModel(list: &list, title: "Kick metres", value: detail.kickMetres)
+        self.itemModel(list: &list, title: "Kick return metres", value: detail.kickReturnMetres)
+        self.itemModel(list: &list, title: "Kick returns", value: detail.kickReturns)
+        self.itemModel(list: &list, title: "Kicks 4020", value: detail.kicks4020)
+        self.itemModel(list: &list, title: "Kicks dead", value: detail.kicksDead)
+        self.itemModel(list: &list, title: "Last touch try assists", value: detail.lastTouchTryAssists)
+        self.itemModel(list: &list, title: "Line break assists", value: detail.lineBreakAssists)
+        self.itemModel(list: &list, title: "Line break causes", value: detail.lineBreakCauses)
+        self.itemModel(list: &list, title: "Line breaks", value: detail.lineBreaks)
+        self.itemModel(list: &list, title: "Line engagements", value: detail.lineEngagements)
+        self.itemModel(list: &list, title: "Long kicks", value: detail.longKicks)
+        self.itemModel(list: &list, title: "Missed tackles", value: detail.missedTackles)
+        self.itemModel(list: &list, title: "Offloads", value: detail.offLoads)
+        self.itemModel(list: &list, title: "One pass runs", value: detail.onePassRuns)
+        self.itemModel(list: &list, title: "Penalties conceded", value: detail.penaltiesConceded)
+        self.itemModel(list: &list, title: "Play the balls", value: detail.playTheBalls)
+        self.itemModel(list: &list, title: "Run metres", value: detail.runMetres)
+        self.itemModel(list: &list, title: "Runs 7 less meters", value: detail.runs7lessMeters)
+        self.itemModel(list: &list, title: "Runs 8 plus meters", value: detail.runs8plusMeters)
+        self.itemModel(list: &list, title: "Send offs", value: detail.sendOffs)
+        self.itemModel(list: &list, title: "Sin bins", value: detail.sinBins)
+        self.itemModel(list: &list, title: "Steal one on one", value: detail.stealsOneOnOne)
+        self.itemModel(list: &list, title: "Stolen one on one", value: detail.stolenOneOnOne)
+        self.itemModel(list: &list, title: "Tackle busts", value: detail.tackleBusts)
+        self.itemModel(list: &list, title: "Tackle opp 20", value: detail.tackledOpp20)
+        self.itemModel(list: &list, title: "Tackle opp half", value: detail.tackleOppHalf)
+        self.itemModel(list: &list, title: "Tackle one on one", value: detail.tacklesOneOnOne)
+        self.itemModel(list: &list, title: "Try assists", value: detail.tryAsists)
+        self.itemModel(list: &list, title: "Try causes", value: detail.tryCauses)
+        self.itemModel(list: &list, title: "Try contribution percentage", value: detail.tryContributionPercentage)
+        self.itemModel(list: &list, title: "Try contributions", value: detail.tryContributions)
+        self.itemModel(list: &list, title: "Try involvements", value: detail.tryInvolvements)
+        self.itemModel(list: &list, title: "Twenty meters restarts", value: detail.twentyMetreRestarts)
+        self.itemModel(list: &list, title: "Weighted kicks", value: detail.weightedKicks)
         sections.append(SectionModel(header: header, items: list))
-        
-        
         
         self.output.display(viewModel: PlayerViewModel(playerModel: playerModel, list: sections))
     }

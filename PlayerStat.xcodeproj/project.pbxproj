@@ -38,6 +38,7 @@
 		A67FDC981FBB0A6A009F5D58 /* PlayerStatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDC971FBB0A6A009F5D58 /* PlayerStatTests.swift */; };
 		A67FDCA91FBB0E8B009F5D58 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDCA81FBB0E8B009F5D58 /* BaseViewController.swift */; };
 		A67FDCAB1FBB0EE1009F5D58 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDCAA1FBB0EE1009F5D58 /* URLConstants.swift */; };
+		A6B8C7051FC06CA7006BD595 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */; };
 		A6BB6C2A1FBCAC140055EDCA /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB6C291FBCAC140055EDCA /* AppStyle.swift */; };
 		A6BB6C311FBCACCF0055EDCA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6BB6C2D1FBCACCE0055EDCA /* OpenSans-Bold.ttf */; };
 		A6BB6C321FBCACCF0055EDCA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6BB6C2E1FBCACCE0055EDCA /* OpenSans-Light.ttf */; };
@@ -101,6 +102,7 @@
 		A67FDC991FBB0A6A009F5D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67FDCA81FBB0E8B009F5D58 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A67FDCAA1FBB0EE1009F5D58 /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
+		A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		A6BB6C291FBCAC140055EDCA /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		A6BB6C2D1FBCACCE0055EDCA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A6BB6C2E1FBCACCE0055EDCA /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			files = (
 				A6541B3D1FBB3B9800A1BF29 /* ReactiveSwift.framework in Frameworks */,
 				A6BB6C3B1FBCC2630055EDCA /* BonMot.framework in Frameworks */,
+				A6B8C7051FC06CA7006BD595 /* MBProgressHUD.framework in Frameworks */,
 				A6541B3E1FBB3B9800A1BF29 /* EasyPeasy.framework in Frameworks */,
 				A6541B3F1FBB3B9800A1BF29 /* ReactiveCocoa.framework in Frameworks */,
 				A6541B401FBB3B9800A1BF29 /* Result.framework in Frameworks */,
@@ -145,6 +148,7 @@
 		A6541B371FBB3B9800A1BF29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */,
 				A6BB6C3A1FBCC2630055EDCA /* BonMot.framework */,
 				A6541B3C1FBB3B9800A1BF29 /* Alamofire.framework */,
 				A6541B391FBB3B9800A1BF29 /* EasyPeasy.framework */,
@@ -435,6 +439,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BonMot.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
@@ -443,6 +448,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EasyPeasy.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BonMot.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

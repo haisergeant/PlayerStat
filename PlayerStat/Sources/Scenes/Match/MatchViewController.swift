@@ -70,10 +70,17 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     
     override func configureContent() {
         super.configureContent()
+        self.showHUD()
+        self.output.load(request: MatchRequest())
+    }
+    
+    override func tryAgainAction() {
+        self.showHUD()
         self.output.load(request: MatchRequest())
     }
     
     func display(viewModel: MatchViewModel) {
+        self.hideHUD()
         result.removeAll()
         result.append(contentsOf: viewModel.model)
         self.tableView.reloadData()

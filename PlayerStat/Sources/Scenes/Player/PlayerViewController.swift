@@ -72,8 +72,14 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     
     override func configureContent() {
         super.configureContent()
+        self.showHUD()
         self.output.load(request: PlayerRequest(player: self.player))
         self.navigationItem.backBarButtonItem?.title = ""
+    }
+    
+    override func tryAgainAction() {
+        self.showHUD()
+        self.output.load(request: PlayerRequest(player: self.player))
     }
     
     func display(viewModel: PlayerViewModel) {
