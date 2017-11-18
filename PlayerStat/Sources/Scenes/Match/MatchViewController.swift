@@ -73,13 +73,12 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
         super.configureContent()
         self.showHUD()
         self.output.load(request: MatchRequest())
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "View Graph", style: .done, target: self, action: #selector(self.navigateToGraph))
     }
     
     override func tryAgainAction() {
         self.showHUD()
         self.output.load(request: MatchRequest())
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "View Graph", style: .done, target: self, action: #selector(self.navigateToGraph))
     }
     
     @objc private func navigateToGraph() {

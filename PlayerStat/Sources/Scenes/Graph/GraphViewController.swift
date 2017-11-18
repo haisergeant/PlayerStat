@@ -10,14 +10,15 @@
 //
 
 import UIKit
+import EasyPeasy
+import BonMot
 
-protocol GraphViewControllerInput
-{
-    
+protocol GraphViewControllerInput {
+    func display(viewModel: GraphViewModel)
 }
 
 protocol GraphViewControllerOutput {
-    
+    func load(request: GraphRequest)
 }
 
 class GraphViewController: BaseViewController, GraphViewControllerInput {
@@ -25,7 +26,10 @@ class GraphViewController: BaseViewController, GraphViewControllerInput {
     var router: GraphRouter!
     
     // MARK: - Object lifecycle
+    let tableView = UITableView()
+    
     var matches: [Match]!
+    var result = [GraphSectionData]()
     init(matches: [Match]) {
         super.init()
         self.matches = matches
@@ -34,5 +38,77 @@ class GraphViewController: BaseViewController, GraphViewControllerInput {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func configureSubviews() {
+        super.configureSubviews()
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
+        self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+    }
+    
+    override func configureLayout() {
+        super.configureLayout()
+        self.tableView.easy.layout(
+            Top().to(self.topLayoutGuide),
+            Left(),
+            Right(),
+            Bottom()
+        )
+    }
+    
+    override func configureContent() {
+        super.configureContent()
+        self.output.load(request: GraphRequest(matches: self.matches))
+    }
+    
+    func display(viewModel: GraphViewModel) {
+        self.hideHUD()
+        self.result = viewModel.list
+        self.tableView.reloadData()
+    }
+    
+    override func navigationTitle() -> String {
+        return "Graph"
+    }
+    
+    override func shouldShowNavigationBar() -> Bool {
+        return true
+    }
+}
+
+extension GraphViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerModel = result[section].headerModel
+        let view = HeaderView()
+        view.configure(model: headerModel)
+        return view
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return result.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return result[section].graphList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let match = self.result[indexPath.section]
+        let data = match.graphList
+        var cell = UITableViewCell()
+        if let item = data[indexPath.row] as? PieChartModel {
+            let pieCell = AppPieChartCell()
+            pieCell.configure(model: item)
+            cell = pieCell
+        }
+        return cell
+    }
+}
+extension GraphViewController: UITableViewDelegate {
     
 }

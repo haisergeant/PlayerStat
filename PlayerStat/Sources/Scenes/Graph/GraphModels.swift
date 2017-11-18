@@ -12,13 +12,26 @@
 import UIKit
 
 struct GraphRequest {
-    
+    let matches: [Match]
 }
 
 struct GraphResponse {
-    
+    let matches: [Match]
 }
 
 class GraphViewModel {
-    
+    let list: [GraphSectionData]
+    init(list: [GraphSectionData]) {
+        self.list = list
+    }
+}
+
+class GraphSectionData {
+    let headerModel: HeaderModel
+    let graphList: [AnyObject]
+    init(headerModel: HeaderModel,
+         graphList: [AnyObject]) {
+        self.headerModel = headerModel
+        self.graphList = graphList
+    }
 }

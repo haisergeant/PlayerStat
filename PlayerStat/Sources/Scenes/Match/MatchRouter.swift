@@ -24,6 +24,7 @@ class MatchRouter: MatchRouterInput {
     }
     
     func navigateToGraph(matches: [Match]) {
-        
+        let controller = GraphConfigurator.getController(matches: matches)
+        self.viewController.navigationController?.pushViewController(controller, animated: true)
     }
 }

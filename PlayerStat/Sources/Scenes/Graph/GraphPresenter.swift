@@ -10,15 +10,52 @@
 //
 
 import UIKit
+import Charts
 
 protocol GraphPresenterInput {
+    func present(response: GraphResponse)
 }
 
 protocol GraphPresenterOutput: class {
+    func display(viewModel: GraphViewModel)
 }
 
 class GraphPresenter: GraphPresenterInput {
     weak var output: GraphPresenterOutput!
     
     // MARK: - Presentation logic
+    
+    func present(response: GraphResponse) {
+        let matches = response.matches
+        let newList = matches.flatMap { match -> GraphSectionData in
+            let headerModel = HeaderModel(title: match.statType)
+            var valA = 0.0
+            
+            var dataEntries = [PieChartDataEntry]()
+            if let teamA = match.teamA {
+                teamA.players.forEach { player in
+                    valA += player.statValue
+                }
+                dataEntries.append(PieChartDataEntry(value: valA, label: teamA.name))
+            }
+            var valB = 0.0
+            if let teamB = match.teamB {
+                teamB.players.forEach { player in
+                    valB += player.statValue
+                }
+                dataEntries.append(PieChartDataEntry(value: valB, label: teamB.name))
+            }
+            
+            let set = PieChartDataSet(values: dataEntries, label: "")
+            set.drawIconsEnabled = false
+            set.sliceSpace = 2
+            set.colors = [AppStyle.instance.colorLightBlue(), AppStyle.instance.colorOrange()]
+            let data = PieChartData(dataSet: set)
+            data.setValueFont(AppStyle.instance.fontBodyCopySmallLight())
+            data.setValueTextColor(.white)
+            let pieChartModel = PieChartModel(data: data)
+            return GraphSectionData(headerModel: headerModel, graphList: [pieChartModel])
+        }
+        self.output.display(viewModel: GraphViewModel(list: newList))
+    }
 }

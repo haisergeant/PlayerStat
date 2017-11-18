@@ -60,6 +60,8 @@
 		A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */; };
 		A6DBAB7C1FBE1F9000BA72A3 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB7B1FBE1F9000BA72A3 /* UIImageView+Utils.swift */; };
 		A6DBAB7E1FBE64E500BA72A3 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DBAB7D1FBE64E500BA72A3 /* CacheService.swift */; };
+		E8B2EDDB1FC0B980006D97CF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2EDDA1FC0B980006D97CF /* GraphView.swift */; };
+		E8B2EDDD1FC0BA0C006D97CF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B2EDDC1FC0BA0C006D97CF /* Charts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,8 @@
 		A6DBAB791FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Utils.swift"; sourceTree = "<group>"; };
 		A6DBAB7B1FBE1F9000BA72A3 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		A6DBAB7D1FBE64E500BA72A3 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		E8B2EDDA1FC0B980006D97CF /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		E8B2EDDC1FC0BA0C006D97CF /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,7 @@
 				A6B8C7051FC06CA7006BD595 /* MBProgressHUD.framework in Frameworks */,
 				A6541B3E1FBB3B9800A1BF29 /* EasyPeasy.framework in Frameworks */,
 				A6541B3F1FBB3B9800A1BF29 /* ReactiveCocoa.framework in Frameworks */,
+				E8B2EDDD1FC0BA0C006D97CF /* Charts.framework in Frameworks */,
 				A6541B401FBB3B9800A1BF29 /* Result.framework in Frameworks */,
 				A6541B411FBB3B9800A1BF29 /* Alamofire.framework in Frameworks */,
 			);
@@ -160,6 +165,7 @@
 		A6541B371FBB3B9800A1BF29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8B2EDDC1FC0BA0C006D97CF /* Charts.framework */,
 				A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */,
 				A6BB6C3A1FBCC2630055EDCA /* BonMot.framework */,
 				A6541B3C1FBB3B9800A1BF29 /* Alamofire.framework */,
@@ -344,6 +350,7 @@
 				A6DBAB751FBDAA7200BA72A3 /* BaseTableViewCell.swift */,
 				A6BE0FC51FC0083D00369F03 /* PlayersCell.swift */,
 				A6BE0FC71FC0086500369F03 /* HeaderView.swift */,
+				E8B2EDDA1FC0B980006D97CF /* GraphView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -466,6 +473,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BonMot.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
@@ -475,6 +483,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BonMot.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MBProgressHUD.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -524,6 +533,7 @@
 				A6BB6C2A1FBCAC140055EDCA /* AppStyle.swift in Sources */,
 				A6541B351FBB32F700A1BF29 /* PlayerViewController.swift in Sources */,
 				A6B8C7121FC072B4006BD595 /* GraphRouter.swift in Sources */,
+				E8B2EDDB1FC0B980006D97CF /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

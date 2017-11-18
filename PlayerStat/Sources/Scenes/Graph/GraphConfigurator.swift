@@ -23,16 +23,10 @@ extension GraphInteractor: GraphViewControllerOutput {
 extension GraphPresenter: GraphInteractorOutput {
 }
 
-class GraphConfiguratorConfigurator {
+class GraphConfigurator {
     // MARK: - Object lifecycle
-    
-    static let sharedInstance = GraphConfiguratorConfigurator()
-    
-    private init() {}
-    
     // MARK: - Configuration
-    
-    func getController(matches: [Match]) -> GraphViewController {
+    class func getController(matches: [Match]) -> GraphViewController {
         let viewController = GraphViewController(matches: matches)
         let router = GraphRouter()
         router.viewController = viewController

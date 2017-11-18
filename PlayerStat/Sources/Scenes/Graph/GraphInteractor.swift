@@ -12,14 +12,17 @@
 import UIKit
 
 protocol GraphInteractorInput {
-    
+    func load(request: GraphRequest)
 }
 
 protocol GraphInteractorOutput {
-    
+    func present(response: GraphResponse)
 }
 
 class GraphInteractor: GraphInteractorInput {
     var output: GraphInteractorOutput!
-    
+
+    func load(request: GraphRequest) {
+        self.output.present(response: GraphResponse(matches: request.matches))
+    }
 }
