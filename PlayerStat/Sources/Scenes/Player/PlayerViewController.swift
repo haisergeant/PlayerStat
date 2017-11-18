@@ -28,6 +28,7 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     var router: PlayerRouter!
     
     // MARK: - Object lifecycle
+    let playerView = PlayerView()
     var tableView = UITableView()
     var result = [HeaderModel]()
     
@@ -43,6 +44,7 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     
     override func configureSubviews() {
         super.configureSubviews()
+        
         self.view.addSubview(self.tableView)
         
         self.tableView.dataSource = self
@@ -60,12 +62,23 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     override func configureContent() {
         super.configureContent()
         self.output.load(request: PlayerRequest(player: self.player))
+        self.navigationItem.backBarButtonItem?.title = ""
     }
     
     func display(viewModel: PlayerViewModel) {
         result.removeAll()
-        
+        self.playerView.configure(model: viewModel.playerModel)
+        result.append(contentsOf: viewModel.list)
         self.tableView.reloadData()
+        self.tableView.tableHeaderView = playerView
+    }
+    
+    override func navigationTitle() -> String {
+        return self.player.shortName
+    }
+    
+    override func shouldShowNavigationBar() -> Bool {
+        return true
     }
 }
 
@@ -81,8 +94,7 @@ extension PlayerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.result[indexPath.row]
         let cell = TitleAndDetailCell()
-        cell.configure(model: model)
-        
+        cell.configure(model: model)        
         return cell
     }
 }

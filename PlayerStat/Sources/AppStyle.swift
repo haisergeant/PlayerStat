@@ -91,4 +91,8 @@ class AppStyle {
     func colorBlack() -> UIColor {
         return UIColor(red: 40.0/255.0, green: 43.0/255.0, blue: 53.0/255.0, alpha: 1.0)
     }
+    
+    func colorBrightBlue() -> UIColor {
+        return UIColor(red: 59.0/255.0, green: 139.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+    }
 }

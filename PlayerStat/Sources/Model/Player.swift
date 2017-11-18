@@ -15,7 +15,7 @@ class Player {
     let shortName: String
     let statValue: Double
     let jumperNumber: Int
-    weak var team: Team?
+    var team: Team?
     
     init(dictionary: NSDictionary) {
         if let value = dictionary.object(forKey: "id") as? Double {

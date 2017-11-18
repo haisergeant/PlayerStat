@@ -29,6 +29,14 @@ class HeaderModel {
         }
     }
     
+    class func cellStyle() -> Style {
+        return Style(titleStyle: StringStyle(.font(AppStyle.instance.fontBodyCopySmallRegular()),
+                                             .color(AppStyle.instance.colorPaleGray())),
+                     rightTitleStyle: StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
+                                                  .color(AppStyle.instance.colorBrightBlue())),
+                     backgroundColor: .white)
+    }
+    
     let style: Style
     let padding: AppPadding
     

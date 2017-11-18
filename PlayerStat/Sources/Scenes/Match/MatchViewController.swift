@@ -75,7 +75,7 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
 }
 
 extension MatchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    private func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerModel = result[section].headerModel
         let view = HeaderView()
         view.configure(model: headerModel)
@@ -103,6 +103,6 @@ extension MatchViewController: UITableViewDataSource {
 
 extension MatchViewController: PlayersCellDelegate {
     func navigateToPlayer(player: Player) {
-        
+        self.router.navigateToPlayer(player: player)
     }
 }

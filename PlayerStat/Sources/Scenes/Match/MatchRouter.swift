@@ -18,6 +18,7 @@ protocol MatchRouterInput {
 class MatchRouter: MatchRouterInput {
     weak var viewController: MatchViewController!
     func navigateToPlayer(player: Player) {
-        
+        let controller = PlayerConfigurator.getController(player: player)
+        self.viewController.navigationController?.pushViewController(controller, animated: true)
     }
 }

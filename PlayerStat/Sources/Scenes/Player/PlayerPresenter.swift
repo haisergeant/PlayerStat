@@ -26,9 +26,31 @@ class PlayerPresenter: PlayerPresenterInput {
     func present(response: PlayerResponse) {
         let detail = response.playerDetail
         let player = detail.player
-        
+        var list = [HeaderModel]()
         let playerModel = PlayerModel(player: player, style: PlayerModel.Style(imageSize: CGSize(width: 120, height: 200)))
-        
         // go through each field in the model
+        self.itemModel(list: &list, title: "Full name", value: detail.player.fullName)
+        self.itemModel(list: &list, title: "Position", value: detail.player.position)
+        self.itemModel(list: &list, title: "Birth date", value: detail.birthDate)
+        self.itemModel(list: &list, title: "Height (cm)", value: detail.height)
+        
+        
+        
+        self.output.display(viewModel: PlayerViewModel(playerModel: playerModel, list: list))
+    }
+    
+    private func itemModel(list: inout [HeaderModel], title: String, value: Any?) {
+        let style = HeaderModel.cellStyle()
+        if let value = value as? String {
+            list.append(HeaderModel(title: title, rightTitle: value, style: style))
+        } else if let value = value as? Date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yy"
+            list.append(HeaderModel(title: title, rightTitle: formatter.string(from: value), style: style))
+        } else if let value = value as? Double {
+            list.append(HeaderModel(title: title, rightTitle: String(format: "%.f", value), style: style))
+        } else if let value = value as? Int {
+            list.append(HeaderModel(title: title, rightTitle: String(format: "%d", value), style: style))
+        }
     }
 }
