@@ -28,7 +28,7 @@ class PlayerConfigurator
     
     // MARK: - Configuration
     class func getController(player: Player) -> PlayerViewController {
-        let viewController = PlayerViewController()
+        let viewController = PlayerViewController(player: player)
         let router = PlayerRouter()
         router.viewController = viewController
         
@@ -37,6 +37,7 @@ class PlayerConfigurator
         
         let interactor = PlayerInteractor()
         interactor.output = presenter
+        interactor.repository = ServerRepository.instance
         
         viewController.output = interactor
         viewController.router = router

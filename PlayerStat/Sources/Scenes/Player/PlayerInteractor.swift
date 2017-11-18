@@ -10,15 +10,31 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 protocol PlayerInteractorInput {
+    func load(request: PlayerRequest)
 }
 
 protocol PlayerInteractorOutput {
+    func present(response: PlayerResponse)
 }
 
 class PlayerInteractor: PlayerInteractorInput {
     var output: PlayerInteractorOutput!
-        
+    var repository: Repository!
+    
     // MARK: - Business logic
+    func load(request: PlayerRequest) {
+        let player = request.player
+        if let team = player.team {
+            self.repository.player(teamId: team.id, playerId: player.id)
+                .startWithResult { [weak self] result in
+                    if let value = result.value {
+                        self?.output.present(response: PlayerResponse(playerDetail: value))
+                    }                    
+                }
+        }
+    }
 }

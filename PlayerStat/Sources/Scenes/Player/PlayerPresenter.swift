@@ -12,13 +12,23 @@
 import UIKit
 
 protocol PlayerPresenterInput {
+    func present(response: PlayerResponse)
 }
 
 protocol PlayerPresenterOutput: class {
+    func display(viewModel: PlayerViewModel)
 }
 
 class PlayerPresenter: PlayerPresenterInput {
   weak var output: PlayerPresenterOutput!
   
   // MARK: - Presentation logic
+    func present(response: PlayerResponse) {
+        let detail = response.playerDetail
+        let player = detail.player
+        
+        let playerModel = PlayerModel(player: player, style: PlayerModel.Style(imageSize: CGSize(width: 120, height: 200)))
+        
+        // go through each field in the model
+    }
 }

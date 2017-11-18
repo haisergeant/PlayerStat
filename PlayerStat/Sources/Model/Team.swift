@@ -40,7 +40,9 @@ class Team {
         self.players = [Player]()
         if let array = dictionary.object(forKey: "top_players") as? [NSDictionary] {
             array.forEach { dict in
-                self.players.append(Player(dictionary: dict))
+                let player = Player(dictionary: dict)
+                player.team = self
+                self.players.append(player)
             }
         }        
     }

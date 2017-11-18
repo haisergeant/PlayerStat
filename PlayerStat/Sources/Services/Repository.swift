@@ -12,5 +12,5 @@ import ReactiveSwift
 
 protocol Repository {
     func matchList() -> SignalProducer<[Match], NSError>
-    func player(teamId: String, playerId: String) -> SignalProducer<Player, NSError>
+    func player(teamId: String, playerId: String) -> SignalProducer<PlayerDetail, NSError>
 }

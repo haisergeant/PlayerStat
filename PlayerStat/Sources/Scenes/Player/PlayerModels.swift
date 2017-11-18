@@ -11,4 +11,19 @@
 
 import UIKit
 
+struct PlayerRequest {
+    var player: Player
+}
 
+struct PlayerResponse {
+    var playerDetail: PlayerDetail
+}
+
+class PlayerViewModel {
+    var playerModel: PlayerModel
+    var list: [HeaderModel]
+    init(playerModel: PlayerModel, list: [HeaderModel]) {
+        self.playerModel = playerModel
+        self.list = list
+    }
+}

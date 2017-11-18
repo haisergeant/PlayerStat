@@ -10,11 +10,17 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import BonMot
+import EasyPeasy
 
 protocol PlayerViewControllerInput {
+    func display(viewModel: PlayerViewModel)
 }
 
 protocol PlayerViewControllerOutput {
+    func load(request: PlayerRequest)
 }
 
 class PlayerViewController: BaseViewController, PlayerViewControllerInput {
@@ -22,6 +28,9 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     var router: PlayerRouter!
     
     // MARK: - Object lifecycle
+    var tableView = UITableView()
+    var result = [HeaderModel]()
+    
     let player: Player!
     init(player: Player) {
         self.player = player
@@ -34,6 +43,47 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     
     override func configureSubviews() {
         super.configureSubviews()
+        self.view.addSubview(self.tableView)
         
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
+        self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+    }
+    
+    override func configureLayout() {
+        super.configureLayout()
+        self.tableView.easy.layout(Edges())
+    }
+    
+    override func configureContent() {
+        super.configureContent()
+        self.output.load(request: PlayerRequest(player: self.player))
+    }
+    
+    func display(viewModel: PlayerViewModel) {
+        result.removeAll()
+        
+        self.tableView.reloadData()
     }
 }
+
+extension PlayerViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return result.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = self.result[indexPath.row]
+        let cell = TitleAndDetailCell()
+        cell.configure(model: model)
+        
+        return cell
+    }
+}
+

@@ -31,7 +31,19 @@ class ServerRepository: Repository {
         }
     }
     
-    func player(teamId: String, playerId: String) -> SignalProducer<Player, NSError> {
-        return SignalProducer(error: NSError(domain: "", code: -1, userInfo: nil))
+    func player(teamId: String, playerId: String) -> SignalProducer<PlayerDetail, NSError> {
+        return SignalProducer { observer, disposable in
+            let url = String(format: URL.PLAYER_AVATAR_URL, teamId, playerId)
+            let request = Alamofire.request(url).responseJSON { response in
+                if let mainDict = response.result.value as? NSDictionary {
+                    let object = PlayerDetail(dictionary: mainDict)
+                    observer.send(value: object)
+                    observer.sendCompleted()
+                }
+            }
+            _ = disposable.observeEnded {
+                request.cancel()
+            }
+        }
     }
 }
