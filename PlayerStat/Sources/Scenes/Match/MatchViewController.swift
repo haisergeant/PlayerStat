@@ -27,6 +27,7 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     
     var tableView = UITableView(frame: .zero, style: UITableViewStyle.plain)
     
+    var matches = [Match]()
     var result = [MatchModel]()
     
     // MARK: - Object lifecycle
@@ -77,12 +78,20 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     override func tryAgainAction() {
         self.showHUD()
         self.output.load(request: MatchRequest())
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "View Graph", style: .done, target: self, action: #selector(self.navigateToGraph))
+    }
+    
+    @objc private func navigateToGraph() {
+        self.router.navigateToGraph(matches: self.matches)
     }
     
     func display(viewModel: MatchViewModel) {
         self.hideHUD()
-        result.removeAll()
-        result.append(contentsOf: viewModel.model)
+        self.matches.removeAll()
+        self.matches.append(contentsOf: viewModel.matches)
+        self.result.removeAll()
+        self.result.append(contentsOf: viewModel.model)
         self.tableView.reloadData()
     }
 }

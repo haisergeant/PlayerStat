@@ -3,3 +3,4 @@ github "nakiostudio/EasyPeasy" ~> 1.6
 github "ReactiveCocoa/ReactiveCocoa" ~> 6.0
 github "Raizlabs/BonMot"
 github "jdg/MBProgressHUD" ~> 1.1.0
+github "danielgindi/Charts" ~> 3.0.4

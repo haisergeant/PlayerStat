@@ -13,6 +13,7 @@ import UIKit
 
 protocol MatchRouterInput {
     func navigateToPlayer(player: Player)
+    func navigateToGraph(matches: [Match])
 }
 
 class MatchRouter: MatchRouterInput {
@@ -20,5 +21,9 @@ class MatchRouter: MatchRouterInput {
     func navigateToPlayer(player: Player) {
         let controller = PlayerConfigurator.getController(player: player)
         self.viewController.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func navigateToGraph(matches: [Match]) {
+        
     }
 }

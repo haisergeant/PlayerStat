@@ -39,6 +39,12 @@
 		A67FDCA91FBB0E8B009F5D58 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDCA81FBB0E8B009F5D58 /* BaseViewController.swift */; };
 		A67FDCAB1FBB0EE1009F5D58 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FDCAA1FBB0EE1009F5D58 /* URLConstants.swift */; };
 		A6B8C7051FC06CA7006BD595 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */; };
+		A6B8C70E1FC072B4006BD595 /* GraphConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C7071FC072B4006BD595 /* GraphConfigurator.swift */; };
+		A6B8C70F1FC072B4006BD595 /* GraphInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C7081FC072B4006BD595 /* GraphInteractor.swift */; };
+		A6B8C7101FC072B4006BD595 /* GraphModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C7091FC072B4006BD595 /* GraphModels.swift */; };
+		A6B8C7111FC072B4006BD595 /* GraphPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C70A1FC072B4006BD595 /* GraphPresenter.swift */; };
+		A6B8C7121FC072B4006BD595 /* GraphRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C70B1FC072B4006BD595 /* GraphRouter.swift */; };
+		A6B8C7131FC072B4006BD595 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C70C1FC072B4006BD595 /* GraphViewController.swift */; };
 		A6BB6C2A1FBCAC140055EDCA /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB6C291FBCAC140055EDCA /* AppStyle.swift */; };
 		A6BB6C311FBCACCF0055EDCA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6BB6C2D1FBCACCE0055EDCA /* OpenSans-Bold.ttf */; };
 		A6BB6C321FBCACCF0055EDCA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6BB6C2E1FBCACCE0055EDCA /* OpenSans-Light.ttf */; };
@@ -103,6 +109,12 @@
 		A67FDCA81FBB0E8B009F5D58 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A67FDCAA1FBB0EE1009F5D58 /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		A6B8C7041FC06CA7006BD595 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
+		A6B8C7071FC072B4006BD595 /* GraphConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphConfigurator.swift; sourceTree = "<group>"; };
+		A6B8C7081FC072B4006BD595 /* GraphInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphInteractor.swift; sourceTree = "<group>"; };
+		A6B8C7091FC072B4006BD595 /* GraphModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModels.swift; sourceTree = "<group>"; };
+		A6B8C70A1FC072B4006BD595 /* GraphPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPresenter.swift; sourceTree = "<group>"; };
+		A6B8C70B1FC072B4006BD595 /* GraphRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRouter.swift; sourceTree = "<group>"; };
+		A6B8C70C1FC072B4006BD595 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		A6BB6C291FBCAC140055EDCA /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		A6BB6C2D1FBCACCE0055EDCA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A6BB6C2E1FBCACCE0055EDCA /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -238,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				A67FDCA81FBB0E8B009F5D58 /* BaseViewController.swift */,
+				A6B8C7061FC07292006BD595 /* Graph */,
 				A67FDCAC1FBB2228009F5D58 /* Match */,
 				A67FDCAD1FBB2228009F5D58 /* Player */,
 			);
@@ -289,6 +302,19 @@
 				A6541B2E1FBB32F700A1BF29 /* PlayerViewController.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		A6B8C7061FC07292006BD595 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				A6B8C7071FC072B4006BD595 /* GraphConfigurator.swift */,
+				A6B8C7081FC072B4006BD595 /* GraphInteractor.swift */,
+				A6B8C7091FC072B4006BD595 /* GraphModels.swift */,
+				A6B8C70A1FC072B4006BD595 /* GraphPresenter.swift */,
+				A6B8C70B1FC072B4006BD595 /* GraphRouter.swift */,
+				A6B8C70C1FC072B4006BD595 /* GraphViewController.swift */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 		A6BB6C2B1FBCACCE0055EDCA /* Resources */ = {
@@ -469,6 +495,7 @@
 				A6541B4C1FBB892E00A1BF29 /* Match.swift in Sources */,
 				A6BE0FC61FC0083D00369F03 /* PlayersCell.swift in Sources */,
 				A67FDCAB1FBB0EE1009F5D58 /* URLConstants.swift in Sources */,
+				A6B8C70F1FC072B4006BD595 /* GraphInteractor.swift in Sources */,
 				A6541B261FBB2BEB00A1BF29 /* MatchRouter.swift in Sources */,
 				A6DBAB781FBE138500BA72A3 /* UIView+Utils.swift in Sources */,
 				A6DBAB7A1FBE13A200BA72A3 /* ReactiveCocoa+Utils.swift in Sources */,
@@ -480,18 +507,23 @@
 				A6DBAB7E1FBE64E500BA72A3 /* CacheService.swift in Sources */,
 				A6541B221FBB2BEB00A1BF29 /* MatchConfigurator.swift in Sources */,
 				A6541B321FBB32F700A1BF29 /* PlayerModels.swift in Sources */,
+				A6B8C7101FC072B4006BD595 /* GraphModels.swift in Sources */,
 				A6BE0FC81FC0086500369F03 /* HeaderView.swift in Sources */,
 				A6541B231FBB2BEB00A1BF29 /* MatchInteractor.swift in Sources */,
 				A6541B271FBB2BEB00A1BF29 /* MatchViewController.swift in Sources */,
 				A6541B311FBB32F700A1BF29 /* PlayerInteractor.swift in Sources */,
+				A6B8C70E1FC072B4006BD595 /* GraphConfigurator.swift in Sources */,
+				A6B8C7111FC072B4006BD595 /* GraphPresenter.swift in Sources */,
 				A6541B441FBB3E2100A1BF29 /* Repository.swift in Sources */,
 				A67FDCA91FBB0E8B009F5D58 /* BaseViewController.swift in Sources */,
 				A6541B241FBB2BEB00A1BF29 /* MatchModels.swift in Sources */,
 				A6541B341FBB32F700A1BF29 /* PlayerRouter.swift in Sources */,
 				A6BB6C391FBCB28F0055EDCA /* BaseView.swift in Sources */,
 				A6541B481FBB7DF900A1BF29 /* Player.swift in Sources */,
+				A6B8C7131FC072B4006BD595 /* GraphViewController.swift in Sources */,
 				A6BB6C2A1FBCAC140055EDCA /* AppStyle.swift in Sources */,
 				A6541B351FBB32F700A1BF29 /* PlayerViewController.swift in Sources */,
+				A6B8C7121FC072B4006BD595 /* GraphRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

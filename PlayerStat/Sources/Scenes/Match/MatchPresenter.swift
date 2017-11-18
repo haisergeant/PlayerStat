@@ -68,6 +68,7 @@ class MatchPresenter: MatchPresenterInput {
                                          playersModel: playersModel))
         }
         
-        self.output.display(viewModel: MatchViewModel(model: finalModel))
+        self.output.display(viewModel: MatchViewModel(matches: matches,
+                                                      model: finalModel))
     }
 }

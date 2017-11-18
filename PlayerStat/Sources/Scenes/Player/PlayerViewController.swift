@@ -74,7 +74,8 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
         super.configureContent()
         self.showHUD()
         self.output.load(request: PlayerRequest(player: self.player))
-        self.navigationItem.backBarButtonItem?.title = ""
+        
+        self.navigationItem.leftBarButtonItem?.title = ""
     }
     
     override func tryAgainAction() {
@@ -83,6 +84,7 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     }
     
     func display(viewModel: PlayerViewModel) {
+        self.hideHUD()
         self.result.removeAll()
         self.playerView.configure(model: viewModel.playerModel)
         self.result.append(contentsOf: viewModel.list)
