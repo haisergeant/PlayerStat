@@ -19,10 +19,15 @@ struct PlayerResponse {
     var playerDetail: PlayerDetail
 }
 
+struct SectionModel {
+    let header: HeaderModel
+    let items: [HeaderModel]
+}
+
 class PlayerViewModel {
     var playerModel: PlayerModel
-    var list: [HeaderModel]
-    init(playerModel: PlayerModel, list: [HeaderModel]) {
+    var list: [SectionModel]
+    init(playerModel: PlayerModel, list: [SectionModel]) {
         self.playerModel = playerModel
         self.list = list
     }

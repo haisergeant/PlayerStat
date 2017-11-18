@@ -17,21 +17,24 @@ class HeaderModel {
         let titleStyle: StringStyle
         let rightTitleStyle: StringStyle
         let backgroundColor: UIColor
+        let separatorColor: UIColor
         init(titleStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopyRegular()),
                                                    .color(AppStyle.instance.colorLightGray())),
              rightTitleStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopyRegular()),
                                                               .color(AppStyle.instance.colorLightGray()),
                                                               .alignment(.right)),
-             backgroundColor: UIColor = AppStyle.instance.colorBlack()) {
+             backgroundColor: UIColor = AppStyle.instance.colorBlack(),
+             separatorColor: UIColor = AppStyle.instance.colorPaleGray()) {
             self.titleStyle = titleStyle
             self.rightTitleStyle = rightTitleStyle
             self.backgroundColor = backgroundColor
+            self.separatorColor = separatorColor
         }
     }
     
     class func cellStyle() -> Style {
         return Style(titleStyle: StringStyle(.font(AppStyle.instance.fontBodyCopySmallRegular()),
-                                             .color(AppStyle.instance.colorPaleGray())),
+                                             .color(AppStyle.instance.colorDarkGray())),
                      rightTitleStyle: StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
                                                   .color(AppStyle.instance.colorBrightBlue())),
                      backgroundColor: .white)
@@ -53,11 +56,13 @@ class HeaderModel {
 class HeaderView: BaseView {
     let labelTitle = UILabel()
     let labelRightTitle = UILabel()
+    let separator = UIView()
     var padding = AppPadding(left: 20, right: 20, top: 10, bottom: 20)
     override func configureSubviews() {
         super.configureSubviews()
         self.addSubview(self.labelTitle)
         self.addSubview(self.labelRightTitle)
+        self.addSubview(self.separator)
     }
     
     override func configureLayout() {
@@ -74,12 +79,20 @@ class HeaderView: BaseView {
             Bottom(self.padding.bottom),
             Right(self.padding.right)
         )
+        
+        self.separator.easy.layout(
+            Left(),
+            Right(),
+            Bottom(),
+            Height(1)
+        )
     }
     
     func configure(model: HeaderModel) {
         self.labelTitle.attributedText = model.title.styled(with: model.style.titleStyle)
         self.labelRightTitle.attributedText = model.rightTitle?.styled(with: model.style.rightTitleStyle)
         self.backgroundColor = model.style.backgroundColor
+        self.separator.backgroundColor = model.style.separatorColor
         
         self.padding = model.padding
         self.configureLayout()

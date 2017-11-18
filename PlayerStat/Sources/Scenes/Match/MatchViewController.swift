@@ -51,6 +51,7 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
         self.view.addSubview(self.tableView)
         
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140        
         self.tableView.separatorStyle = .none
@@ -59,7 +60,12 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
     
     override func configureLayout() {
         super.configureLayout()
-        self.tableView.easy.layout(Edges())
+        self.tableView.easy.layout(
+            Top().to(self.topLayoutGuide),
+            Left(),
+            Right(),
+            Bottom()
+        )
     }
     
     override func configureContent() {
@@ -75,13 +81,12 @@ class MatchViewController: BaseViewController, MatchViewControllerInput {
 }
 
 extension MatchViewController: UITableViewDataSource {
-    private func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerModel = result[section].headerModel
         let view = HeaderView()
         view.configure(model: headerModel)
         return view
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return result.count
@@ -99,6 +104,9 @@ extension MatchViewController: UITableViewDataSource {
         cell.configure(model: players)
         return cell
     }
+}
+extension MatchViewController: UITableViewDelegate {
+    
 }
 
 extension MatchViewController: PlayersCellDelegate {

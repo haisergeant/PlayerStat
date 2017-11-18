@@ -30,7 +30,7 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     // MARK: - Object lifecycle
     let playerView = PlayerView()
     var tableView = UITableView()
-    var result = [HeaderModel]()
+    var result = [SectionModel]()
     
     let player: Player!
     init(player: Player) {
@@ -44,10 +44,11 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     
     override func configureSubviews() {
         super.configureSubviews()
-        
+        self.view.addSubview(self.playerView)
         self.view.addSubview(self.tableView)
         
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
         self.tableView.separatorStyle = .none
@@ -56,7 +57,17 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     
     override func configureLayout() {
         super.configureLayout()
-        self.tableView.easy.layout(Edges())
+        self.playerView.easy.layout(
+            Top().to(self.topLayoutGuide),
+            Left(),
+            Right()
+        )
+        self.tableView.easy.layout(
+            Top().to(self.playerView, .bottom),
+            Left(),
+            Right(),
+            Bottom()
+        )
     }
     
     override func configureContent() {
@@ -66,11 +77,10 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
     }
     
     func display(viewModel: PlayerViewModel) {
-        result.removeAll()
+        self.result.removeAll()
         self.playerView.configure(model: viewModel.playerModel)
-        result.append(contentsOf: viewModel.list)
+        self.result.append(contentsOf: viewModel.list)
         self.tableView.reloadData()
-        self.tableView.tableHeaderView = playerView
     }
     
     override func navigationTitle() -> String {
@@ -83,19 +93,29 @@ class PlayerViewController: BaseViewController, PlayerViewControllerInput {
 }
 
 extension PlayerViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerModel = result[section].header
+        let view = HeaderView()
+        view.configure(model: headerModel)
+        return view
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return result.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return result[section].items.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = self.result[indexPath.row]
+        let model = self.result[indexPath.section].items[indexPath.row]
         let cell = TitleAndDetailCell()
         cell.configure(model: model)        
         return cell
     }
 }
 
+extension PlayerViewController: UITableViewDelegate {
+    
+}

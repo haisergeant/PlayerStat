@@ -25,6 +25,7 @@ struct PlayerModel {
         var positionValueStyle: StringStyle
         var imageSize: CGSize
         var alignment: NSTextAlignment
+        var separatorColor: UIColor
         init(shortNameStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
                                                        .color(AppStyle.instance.colorDarkGray())),
              jumperValueStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
@@ -32,12 +33,14 @@ struct PlayerModel {
              positionValueStyle: StringStyle = StringStyle(.font(AppStyle.instance.fontBodyCopySemibold()),
                                                            .color(AppStyle.instance.colorLightGray())),
              imageSize: CGSize = CGSize(width: 60.0, height: 100.0),
-             alignment: NSTextAlignment = .left) {
+             alignment: NSTextAlignment = .left,
+             separatorColor: UIColor = AppStyle.instance.colorPaleGray()) {
             self.shortNameStyle = shortNameStyle
             self.jumperValueStyle = jumperValueStyle
             self.positionValueStyle = positionValueStyle
             self.imageSize = imageSize
             self.alignment = alignment
+            self.separatorColor = separatorColor
         }
     }
     
@@ -74,6 +77,8 @@ class PlayerView: BaseView {
     let labelJumper = UILabel()
     let labelPosition = UILabel()
     
+    let separator = UIView()
+    
     var padding = PlayerModel.Padding()
     var style = PlayerModel.Style()
     
@@ -86,6 +91,8 @@ class PlayerView: BaseView {
         self.infoContainer.addSubview(self.labelName)
         self.infoContainer.addSubview(self.labelJumper)
         self.infoContainer.addSubview(self.labelPosition)
+        
+        self.addSubview(self.separator)
         
         self.labelName.numberOfLines = 0
         self.labelJumper.numberOfLines = 0
@@ -147,6 +154,14 @@ class PlayerView: BaseView {
             Bottom(self.padding.appPadding.bottom)
         )
         self.labelPosition.textAlignment = self.style.alignment
+        
+        self.separator.easy.layout(
+            Left(),
+            Right(),
+            Bottom(),
+            Height(1)
+        )
+        
     }
     
     func configure(model: PlayerModel) {
@@ -154,6 +169,7 @@ class PlayerView: BaseView {
         self.labelName.attributedText = model.shortName.styled(with: model.style.shortNameStyle)
         self.labelJumper.attributedText = model.jumperValue.styled(with: model.style.jumperValueStyle)
         self.labelPosition.attributedText = model.positionValue.styled(with: model.style.positionValueStyle)
+        self.separator.backgroundColor = model.style.separatorColor
         
         self.style = model.style
         self.padding = model.padding

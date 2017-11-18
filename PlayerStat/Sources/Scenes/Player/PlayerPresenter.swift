@@ -26,17 +26,35 @@ class PlayerPresenter: PlayerPresenterInput {
     func present(response: PlayerResponse) {
         let detail = response.playerDetail
         let player = detail.player
+        var sections = [SectionModel]()
+        
         var list = [HeaderModel]()
-        let playerModel = PlayerModel(player: player, style: PlayerModel.Style(imageSize: CGSize(width: 120, height: 200)))
+        let playerModel = PlayerModel(player: player, style: PlayerModel.Style(imageSize: CGSize(width: 140, height: 200)))
         // go through each field in the model
+        
+        var header = HeaderModel(title: "Personal information")
         self.itemModel(list: &list, title: "Full name", value: detail.player.fullName)
         self.itemModel(list: &list, title: "Position", value: detail.player.position)
         self.itemModel(list: &list, title: "Birth date", value: detail.birthDate)
         self.itemModel(list: &list, title: "Height (cm)", value: detail.height)
+        self.itemModel(list: &list, title: "Weight (kg)", value: detail.weight)
+        sections.append(SectionModel(header: header, items: list))
+        
+        header = HeaderModel(title: "Career status")
+        list.removeAll()
+        self.itemModel(list: &list, title: "Games", value: detail.games)
+        self.itemModel(list: &list, title: "Points", value: detail.points)
+        self.itemModel(list: &list, title: "Tries", value: detail.tries)
+        self.itemModel(list: &list, title: "Win percentage", value: detail.winPercentage)
+        sections.append(SectionModel(header: header, items: list))
+        
+        header = HeaderModel(title: "Last match status")
+        list.removeAll()
+        sections.append(SectionModel(header: header, items: list))
         
         
         
-        self.output.display(viewModel: PlayerViewModel(playerModel: playerModel, list: list))
+        self.output.display(viewModel: PlayerViewModel(playerModel: playerModel, list: sections))
     }
     
     private func itemModel(list: inout [HeaderModel], title: String, value: Any?) {
