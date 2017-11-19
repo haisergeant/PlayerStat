@@ -18,7 +18,6 @@ class FontUtils {
         var errorRef: Unmanaged<CFError>?
         
         if CTFontManagerRegisterGraphicsFont(fontRef!, &errorRef) == false {
-            NSLog("Failed to register font - register graphics font failed - this font may have already been registered in the main bundle.")
         } else {
         }
     }
