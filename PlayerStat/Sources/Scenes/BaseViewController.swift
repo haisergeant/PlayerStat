@@ -78,6 +78,7 @@ class BaseViewController: UIViewController, ErrorPresenterOutput {
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
             self?.cancelAction()
         }))
+        self.present(controller, animated: true, completion: nil)
     }
     
     func tryAgainAction() {

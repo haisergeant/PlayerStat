@@ -28,9 +28,11 @@ class GraphPresenter: GraphPresenterInput {
     func present(response: GraphResponse) {
         let matches = response.matches
         let newList = matches.flatMap { match -> GraphSectionData in
+            
             let headerModel = HeaderModel(title: match.statType)
             var valA = 0.0
             
+            // pie chart
             var dataEntries = [PieChartDataEntry]()
             if let teamA = match.teamA {
                 teamA.players.forEach { player in
@@ -53,8 +55,40 @@ class GraphPresenter: GraphPresenterInput {
             let data = PieChartData(dataSet: set)
             data.setValueFont(AppStyle.instance.fontBodyCopySmallLight())
             data.setValueTextColor(.white)
-            let pieChartModel = PieChartModel(data: data)
-            return GraphSectionData(headerModel: headerModel, graphList: [pieChartModel])
+            let pieChartModel = ChartModel(data: data)
+            
+            // bar chart
+            var barEntries = [BarChartDataEntry]()
+            var max = 0
+            if let teamA = match.teamA {
+                if max < teamA.players.count { max = teamA.players.count }
+            }
+            if let teamB = match.teamB {
+                if max < teamB.players.count { max = teamB.players.count }
+            }
+            var total = [Player]()
+            for i in 0..<max {
+                if let teamA = match.teamA, i < teamA.players.count {
+                    total.append(teamA.players[i])
+                }
+                if let teamB = match.teamB, i < teamB.players.count {
+                    total.append(teamB.players[i])
+                }
+            }
+            for (i, player) in total.enumerated() {
+                barEntries.append(BarChartDataEntry(x: Double(i), y: player.statValue))
+            }
+            let barSet = BarChartDataSet(values: barEntries, label: "")
+            barSet.colors = [AppStyle.instance.colorLightBlue(), AppStyle.instance.colorOrange()]
+            barSet.drawValuesEnabled = false
+            
+            let barData = BarChartData(dataSet: barSet)
+            barData.setValueFont(AppStyle.instance.fontBodyCopySmallLight())
+            barData.setValueTextColor(.white)
+            barData.barWidth = 1.0
+            let barModel = ChartModel(data: barData)
+            
+            return GraphSectionData(headerModel: headerModel, graphList: [pieChartModel, barModel])
         }
         self.output.display(viewModel: GraphViewModel(list: newList))
     }

@@ -12,6 +12,7 @@
 import UIKit
 import EasyPeasy
 import BonMot
+import Charts
 
 protocol GraphViewControllerInput {
     func display(viewModel: GraphViewModel)
@@ -101,10 +102,16 @@ extension GraphViewController: UITableViewDataSource {
         let match = self.result[indexPath.section]
         let data = match.graphList
         var cell = UITableViewCell()
-        if let item = data[indexPath.row] as? PieChartModel {
-            let pieCell = AppPieChartCell()
-            pieCell.configure(model: item)
-            cell = pieCell
+        if let item = data[indexPath.row] as? ChartModel {
+            if item.data is PieChartData {
+                let pieCell = AppPieChartCell()
+                pieCell.configure(model: item)
+                cell = pieCell
+            } else if item.data is BarChartData {
+                let barCell = AppBarChartCell()
+                barCell.configure(model: item)
+                cell = barCell
+            }
         }
         return cell
     }

@@ -17,7 +17,7 @@ protocol PlayerInteractorInput {
     func load(request: PlayerRequest)
 }
 
-protocol PlayerInteractorOutput {
+protocol PlayerInteractorOutput: ErrorPresenterInput {
     func present(response: PlayerResponse)
 }
 
@@ -33,7 +33,9 @@ class PlayerInteractor: PlayerInteractorInput {
                 .startWithResult { [weak self] result in
                     if let value = result.value {
                         self?.output.present(response: PlayerResponse(playerDetail: value))
-                    }                    
+                    } else {
+                        self?.output.presentError(error: "Cannot call service")
+                    }
                 }
         }
     }

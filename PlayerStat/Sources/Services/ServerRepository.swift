@@ -23,6 +23,8 @@ class ServerRepository: Repository {
                     }
                     observer.send(value: matches)
                     observer.sendCompleted()
+                } else if let error = response.error {
+                    observer.send(error: error as NSError)
                 }
             }
             _ = disposable.observeEnded {
@@ -39,6 +41,8 @@ class ServerRepository: Repository {
                     let object = PlayerDetail(dictionary: mainDict)
                     observer.send(value: object)
                     observer.sendCompleted()
+                } else if let error = response.error {
+                    observer.send(error: error as NSError)
                 }
             }
             _ = disposable.observeEnded {

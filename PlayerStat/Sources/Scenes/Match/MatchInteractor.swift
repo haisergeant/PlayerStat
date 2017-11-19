@@ -15,7 +15,7 @@ protocol MatchInteractorInput {
     func load(request: MatchRequest)
 }
 
-protocol MatchInteractorOutput {
+protocol MatchInteractorOutput: ErrorPresenterInput {
     func present(response: MatchResponse)
 }
 
@@ -28,6 +28,8 @@ class MatchInteractor: MatchInteractorInput {
             .startWithResult { [weak self] result in
                 if let value = result.value {
                     self?.output.present(response: MatchResponse(matches: value))
+                } else {
+                    self?.output.presentError(error: "Cannot call service")
                 }
         }
     }
