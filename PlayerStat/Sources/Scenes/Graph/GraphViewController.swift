@@ -104,11 +104,11 @@ extension GraphViewController: UITableViewDataSource {
         var cell = UITableViewCell()
         if let item = data[indexPath.row] as? ChartModel {
             if item.data is PieChartData {
-                let pieCell = AppPieChartCell()
+                let pieCell = tableView.dequeueReusableCell(withIdentifier: "AppPieChartCell") as? AppPieChartCell ?? AppPieChartCell()
                 pieCell.configure(model: item)
                 cell = pieCell
             } else if item.data is BarChartData {
-                let barCell = AppBarChartCell()
+                let barCell = tableView.dequeueReusableCell(withIdentifier: "AppBarChartCell") as? AppBarChartCell ?? AppBarChartCell()
                 barCell.configure(model: item)
                 cell = barCell
             }

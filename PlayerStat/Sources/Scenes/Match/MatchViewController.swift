@@ -114,10 +114,12 @@ extension MatchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let match = self.result[indexPath.section]
         let players = match.playersModel[indexPath.row]
-        let cell = PlayersCell(delegate: self)
-        
-        cell.configure(model: players)
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "PlayersCell") as? PlayersCell
+        if cell == nil {
+            cell = PlayersCell(delegate: self)
+        }
+        cell!.configure(model: players)
+        return cell!
     }
 }
 extension MatchViewController: UITableViewDelegate {

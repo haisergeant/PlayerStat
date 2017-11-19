@@ -118,9 +118,12 @@ extension PlayerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.result[indexPath.section].items[indexPath.row]
-        let cell = TitleAndDetailCell()
-        cell.configure(model: model)        
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndDetailCell") as? TitleAndDetailCell
+        if cell == nil {
+            cell = TitleAndDetailCell()
+        }
+        cell!.configure(model: model)
+        return cell!
     }
 }
 
